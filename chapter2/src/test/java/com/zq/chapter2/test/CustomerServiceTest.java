@@ -20,7 +20,7 @@ public class CustomerServiceTest {
     private final CustomerService customerService;
 
     public CustomerServiceTest(){
-        customerService = new CustomerService();
+        customerService = CustomerService.getInstance();
     }
 
     @Before

@@ -18,6 +18,24 @@ public class CustomerService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
 
+    private static CustomerService customerService;
+
+
+    private CustomerService(){
+
+    }
+
+    public static CustomerService getInstance(){
+        if(customerService == null){
+            synchronized (CustomerService.class) {   //保证了同一时间只能只能有一个对象访问此同步块
+                if(customerService == null){
+                    customerService = new CustomerService();
+                }
+            }
+        }
+        return customerService;
+    }
+
 /*    private static final String DRIVER;
 
     private static final String URL;
