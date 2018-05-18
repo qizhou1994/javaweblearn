@@ -1,6 +1,8 @@
 package com.zq.smart_framework.proxy.test.aop;
 
+import com.zq.smart_framework.annotation.Service;
 import com.zq.smart_framework.proxy.test.aop.asp.Tag;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,6 +12,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class GreetingImpl implements Greeting,Apology {
+
+
+
 
     @Override
     public void sayHello(String name) {

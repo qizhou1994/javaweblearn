@@ -1,11 +1,11 @@
 package com.zq.smart_framework.proxy.test;
 
 
-
-import com.zq.smart_framework.proxy.test.aop.*;
-import org.springframework.aop.framework.ProxyFactory;
+import com.zq.smart_framework.helper.AopHelper;
+import com.zq.smart_framework.proxy.test.aop.Apology;
+import com.zq.smart_framework.proxy.test.aop.Greeting;
+import com.zq.smart_framework.proxy.test.aop.GreetingImpl;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
@@ -26,13 +26,17 @@ public class Main {
 
         hello.say("MC");*/
 
-        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/classes/applicationContext.xml");;//获取spring context
+       /* ApplicationContext context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/classes/applicationContext.xml");;//获取spring context
 
-        GreetingImpl greeting = (GreetingImpl) context.getBean(GreetingImpl.class);
+        Greeting  greeting = (Greeting) context.getBean(Greeting.class);
 
-        greeting.saySorry("MCCC");
-        greeting.sayHello("MCCC");
-        greeting.goodMorning("aa");
+        greeting.sayHello("aaaa");
+
+        Apology apology = (Apology) greeting;
+
+        apology.saySorry("aaaaaaaaaaaaaa");
+*/
+
 
     }
 }

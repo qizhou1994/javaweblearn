@@ -47,7 +47,11 @@ public class DispatcherServlet extends HttpServlet {
         defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
     }
 
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.getRequestDispatcher("/WEB-INF/view/nol.jsp").forward(req,resp);
+    }
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

@@ -1,6 +1,7 @@
 package com.zq.smart_framework.proxy.test.aop;
 
 
+import com.zq.smart_framework.annotation.Service;
 import net.sf.cglib.proxy.MethodProxy;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;

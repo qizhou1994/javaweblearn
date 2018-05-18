@@ -1,9 +1,6 @@
 package com.zq.smart_framework;
 
-import com.zq.smart_framework.helper.BeanHelper;
-import com.zq.smart_framework.helper.ClassHelper;
-import com.zq.smart_framework.helper.ControllerHelper;
-import com.zq.smart_framework.helper.IocHelper;
+import com.zq.smart_framework.helper.*;
 import com.zq.smart_framework.util.ClassUtil;
 
 /**
@@ -15,11 +12,14 @@ import com.zq.smart_framework.util.ClassUtil;
 public final class HelperLoader {
 
     public static void init(){
+        // AopHelper.class要在   IocHelper.class之前加载，因为需要使用AopHelper获取代理，才可注入
         Class<?>[] classList = {
                 ClassHelper.class,
                 BeanHelper.class,
+                AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
+
         };
 
         for(Class<?> cls : classList){

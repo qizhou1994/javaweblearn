@@ -3,7 +3,10 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 扫描指定包-->
     <context:component-scan base-package="com.zq.smart_framework.proxy.test"/>
    <!-- <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -64,6 +67,15 @@
         <property name="optimize" value="true"/>
     </bean>-->
 
-    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
+    <bean id="greetingImpl" class="com.zq.smart_framework.proxy.test.aop.GreetingImpl"/>
+
+    <bean id="greetingAspect" class="com.zq.smart_framework.proxy.test.aop.asp.GreetingAspect"/>
+
+    <aop:config >
+    <aop:aspect ref="greetingAspect">
+        <aop:around method="around" pointcut="execution(* com.zq.smart_framework.proxy.test.aop.GreetingImpl.*(..))"/>
+    </aop:aspect>
+    </aop:config>
 </beans>
