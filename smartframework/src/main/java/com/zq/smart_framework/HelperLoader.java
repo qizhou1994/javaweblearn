@@ -19,11 +19,17 @@ public final class HelperLoader {
                 AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
-
         };
 
         for(Class<?> cls : classList){
-            ClassUtil.loadClass(cls.getName());
+            try {
+                System.out.println("cls = "+ cls.getName());
+                ClassUtil.loadClass(cls.getName());
+            }catch (Exception e){
+                System.out.println("load class failure = "+ e.getMessage());
+                e.printStackTrace();
+            }
+
         }
     }
 }

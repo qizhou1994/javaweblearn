@@ -35,6 +35,7 @@ public final class ClassUtil {
     public static Class<?> loadClass(String className, boolean isInitialized) {
         Class<?> cls;
         try {
+
             cls = Class.forName(className, isInitialized, getClassLoader());
         } catch (Exception e) {
             LOGGER.error("load class failure", e);

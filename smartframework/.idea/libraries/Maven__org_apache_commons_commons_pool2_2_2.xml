@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.commons:commons-pool2:2.2">
+    <CLASSES>
+      <root url="jar://D:/java/maven/apache-maven-3.5.3/zq_respository/org/apache/commons/commons-pool2/2.2/commons-pool2-2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/java/maven/apache-maven-3.5.3/zq_respository/org/apache/commons/commons-pool2/2.2/commons-pool2-2.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/java/maven/apache-maven-3.5.3/zq_respository/org/apache/commons/commons-pool2/2.2/commons-pool2-2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

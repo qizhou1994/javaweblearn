@@ -1,0 +1,9 @@
+CREATE TABLE customer (
+	`id` bigint(20) NOT NULL AUTO_INCREMENT,
+	`name` varchar(225) DEFAULT NULL,
+	`contact` varchar(255) DEFAULT NULL,
+	`telephone` varchar(255) DEFAULT NULL,
+	`email` varchar(255) DEFAULT NULL,
+	`remark` text,
+	PRIMARY KEY (`id`)
+) ENGINE = INNODB DEFAULT charset = utf8;

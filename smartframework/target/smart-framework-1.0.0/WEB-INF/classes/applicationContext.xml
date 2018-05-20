@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 扫描指定包-->
+    <context:component-scan base-package="com.zq.smart_framework.proxy.test"/>
+   <!-- <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="interfaces" value="com.zq.smart_framework.proxy.test.aop.Greeting"/>
+        <property name="target" ref="greetingImpl"/>
+        <property name="interceptorNames" value="greetingAroundAdvice"/> &lt;!&ndash;拦截器&ndash;&gt;
+    </bean>-->
+
+
+  <!--  <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        &lt;!&ndash;接口&ndash;&gt;
+        <property name="interfaces" value="com.zq.smart_framework.proxy.test.aop.Apology"/>
+        &lt;!&ndash;目标实现类&ndash;&gt;
+        <property name="target" ref="greetingImpl"/>
+        &lt;!&ndash;拦截器&ndash;&gt;
+        <property name="interceptorNames" value="greetingIntroAdvice"/>
+        &lt;!&ndash;代理目标类&ndash;&gt;
+        <property name="proxyTargetClass" value="true"/>
+    </bean>-->
+
+<!--    &lt;!&ndash;配置一个接口切面 &ndash;&gt;
+    <bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+        &lt;!&ndash;增强&ndash;&gt;
+        <property name="advice" ref="greetingAroundAdvice"/>
+        &lt;!&ndash;切点&ndash;&gt;
+        <property name="pattern" value="com.zq.smart_framework.proxy.test.aop.GreetingImpl.good.*"/>
+
+    </bean>
+
+    <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+
+        &lt;!&ndash;目标实现类&ndash;&gt;
+        <property name="target" ref="greetingImpl"/>
+        &lt;!&ndash;拦截器&ndash;&gt;
+        <property name="interceptorNames" value="greetingAdvisor"/>
+        &lt;!&ndash;代理目标类&ndash;&gt;
+        <property name="proxyTargetClass" value="true"/>
+    </bean>-->
+
+
+ <!--   &lt;!&ndash;自动代理 扫描名称&ndash;&gt;
+    <bean   class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+        &lt;!&ndash;只为 Impl后缀代理&ndash;&gt;
+        <property name="beanNames" value="*Impl"/>
+        <property name="interceptorNames" value="greetingAroundAdvice"/>
+        <property name="optimize" value="true"/>
+    </bean>-->
+
+  <!--  &lt;!&ndash;扫描切面配置&ndash;&gt;
+    <bean id="greetingAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+
+        <property name="advice" ref="greetingAroundAdvice"/>
+
+        <property name="pattern" value="com.zq.smart_framework.proxy.test.aop.GreetingImpl.good.*"/>
+
+    </bean>
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+        <property name="optimize" value="true"/>
+    </bean>-->
+
+    <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
+
+    <!--<bean id="greetingImpl" class="com.zq.smart_framework.proxy.test.aop.GreetingImpl"/>
+
+    <bean id="greetingAspect" class="com.zq.smart_framework.proxy.test.aop.asp.GreetingAspect"/>
+
+    <aop:config >
+    <aop:aspect ref="greetingAspect">
+        <aop:around method="around" pointcut="execution(* com.zq.smart_framework.proxy.test.aop.GreetingImpl.*(..))"/>
+    </aop:aspect>
+    </aop:config>-->
+</beans>

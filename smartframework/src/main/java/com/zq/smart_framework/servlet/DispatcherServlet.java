@@ -28,23 +28,24 @@ import java.util.Map;
  * Email : qizhou1994@126.com
  */
 
-@WebServlet(urlPatterns = "/*",loadOnStartup = 0)
+@WebServlet("/*")
 public class DispatcherServlet extends HttpServlet {
 
     @Override
-    public void init(ServletConfig config) throws ServletException {
+    public void init(ServletConfig config) throws ServletException   {
 
-        //初始化相关Helper类
-        HelperLoader.init();
-        //获取ServletContext对象 （注册servlet）
-        ServletContext servletContext = getServletConfig().getServletContext();
-        //注册处理JSP的Servlet
-        ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
-        jspServlet.addMapping(ConfigHelper.getAppJspPath() + "*");
-        //注册处理静态资源的默认Servlet
-        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
+    //初始化相关Helper类
+    HelperLoader.init();
+    //获取ServletContext对象 （注册servlet）
+     ServletContext servletContext = getServletConfig().getServletContext();
+    //注册处理JSP的Servlet
+    ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
+    jspServlet.addMapping(ConfigHelper.getAppJspPath() + "*");
+    //注册处理静态资源的默认Servlet
+    ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
 
-        defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
+    defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
+
     }
 
     @Override

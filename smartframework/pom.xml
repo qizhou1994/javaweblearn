@@ -11,10 +11,10 @@
     <!--配置 打war包-->
     <packaging>war</packaging>
 
-    <build>
+   <!-- <build>
     <plugins>
-    <!-- Compile 编译 所有的plugin都要添加到此-->
-    <!--设置jdk版本 -->
+    &lt;!&ndash; Compile 编译 所有的plugin都要添加到此&ndash;&gt;
+    &lt;!&ndash;设置jdk版本 &ndash;&gt;
     <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -31,7 +31,7 @@
     <properties>
         <spring.version>4.2.5.RELEASE</spring.version>
     </properties>
-    <!--servlet-->
+    &lt;!&ndash;servlet&ndash;&gt;
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -40,7 +40,7 @@
             <scope>provided</scope>
         </dependency>
 
-    <!--Jsp-->
+    &lt;!&ndash;Jsp&ndash;&gt;
         <dependency>
             <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
@@ -48,7 +48,7 @@
             <scope>provided</scope>
         </dependency>
 
-        <!--JSTL-->
+        &lt;!&ndash;JSTL&ndash;&gt;
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
@@ -56,14 +56,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--SLF4-->
+        &lt;!&ndash;SLF4&ndash;&gt;
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.7</version>
         </dependency>
 
-        <!--MySql-->
+        &lt;!&ndash;MySql&ndash;&gt;
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -71,14 +71,14 @@
             <scope>runtime</scope>
         </dependency>
 
-        <!--Jackson-->
+        &lt;!&ndash;Jackson&ndash;&gt;
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.5.2</version>
         </dependency>
 
-        <!--Apache Commons Lang-->
+        &lt;!&ndash;Apache Commons Lang&ndash;&gt;
 
             <dependency>
                 <groupId>org.apache.commons</groupId>
@@ -86,34 +86,34 @@
                 <version>3.3.2</version>
             </dependency>
 
-        <!--Apache Commons Collections-->
+        &lt;!&ndash;Apache Commons Collections&ndash;&gt;
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>4.0</version>
         </dependency>
 
-        <!--Apache Commons DbUtils-->
+        &lt;!&ndash;Apache Commons DbUtils&ndash;&gt;
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
             <version>1.6</version>
         </dependency>
-        <!--Apache DBCP-->
+        &lt;!&ndash;Apache DBCP&ndash;&gt;
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.0.1</version>
         </dependency>
 
-        <!-- Apache Commons FileUpload -->
+        &lt;!&ndash; Apache Commons FileUpload &ndash;&gt;
         <dependency>
             <groupId>commons-fileupload</groupId>
             <artifactId>commons-fileupload</artifactId>
             <version>1.3.1</version>
         </dependency>
 
-        <!-- AspectJ -->
+        &lt;!&ndash; AspectJ &ndash;&gt;
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
@@ -125,14 +125,14 @@
             <artifactId>aspectjweaver</artifactId>
             <version>1.6.11</version>
         </dependency>
-        <!--CGLib类库-->
+        &lt;!&ndash;CGLib类库&ndash;&gt;
         <dependency>
             <groupId>cglib</groupId>
             <artifactId>cglib</artifactId>
             <version>3.2.4</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core &ndash;&gt;
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -147,7 +147,7 @@
 
 
 
-        <!--   &lt;!&ndash;springaop&ndash;&gt;
+        &lt;!&ndash;   &lt;!&ndash;springaop&ndash;&gt;
            <dependency>
                <groupId>org.springframework</groupId>
                <artifactId>spring-aop</artifactId>
@@ -160,16 +160,16 @@
                <version>2.5.6.SEC03</version>
                <type>jar</type>
                <scope>compile</scope>
-           </dependency>-->
-       <!-- <dependency>
+           </dependency>&ndash;&gt;
+       &lt;!&ndash; <dependency>
         <groupId>org.springframework.web</groupId>
         <artifactId>org.springframework.web</artifactId>
         <version>2.5.6.RELEASE</version>
         <type>jar</type>
         <scope>compile</scope>
-        </dependency>-->
+        </dependency>&ndash;&gt;
 
-        <!--springframework-->
+        &lt;!&ndash;springframework&ndash;&gt;
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
@@ -186,7 +186,7 @@
             <version>4.2.6.RELEASE</version>
         </dependency>
 
-        <!-- spring -->
+        &lt;!&ndash; spring &ndash;&gt;
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aop</artifactId>
@@ -284,8 +284,138 @@
             <version>1.4</version>
         </dependency>
 
+    </dependencies>-->
+    <dependencies>
+
+
+
+
+       <!--spring-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>4.3.9.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring</artifactId>
+            <version>2.5.6.SEC03</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>4.2.5.RELEASE</version>
+        </dependency>
+
+        <!-- Servlet -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSP -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.2</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSTL -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <!-- MySQL -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.33</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!-- Jackson -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.5.2</version>
+        </dependency>
+        <!-- CGLib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <!-- Apache Commons Lang -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.3.2</version>
+        </dependency>
+        <!-- Apache Commons Collections -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>4.0</version>
+        </dependency>
+        <!-- Apache Commons DbUtils -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <!-- Apache Commons DBCP -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.0.1</version>
+        </dependency>
+        <!-- Apache Commons FileUpload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.1</version>
+        </dependency>
+        <!-- Apache Commons Codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.10</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- Compile -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+            <!-- Test -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 

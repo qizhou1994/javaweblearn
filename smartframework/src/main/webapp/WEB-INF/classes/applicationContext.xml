@@ -8,9 +8,9 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 扫描指定包-->
-    <context:component-scan base-package="com.zq.smart_framework.proxy.test"/>
+    <context:component-scan base-package="com.zq.smart_framework.test"/>
    <!-- <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="interfaces" value="com.zq.smart_framework.proxy.test.aop.Greeting"/>
+        <property name="interfaces" value="com.zq.smart_framework.test.aop.Greeting"/>
         <property name="target" ref="greetingImpl"/>
         <property name="interceptorNames" value="greetingAroundAdvice"/> &lt;!&ndash;拦截器&ndash;&gt;
     </bean>-->
@@ -18,7 +18,7 @@
 
   <!--  <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         &lt;!&ndash;接口&ndash;&gt;
-        <property name="interfaces" value="com.zq.smart_framework.proxy.test.aop.Apology"/>
+        <property name="interfaces" value="com.zq.smart_framework.test.aop.Apology"/>
         &lt;!&ndash;目标实现类&ndash;&gt;
         <property name="target" ref="greetingImpl"/>
         &lt;!&ndash;拦截器&ndash;&gt;
@@ -32,7 +32,7 @@
         &lt;!&ndash;增强&ndash;&gt;
         <property name="advice" ref="greetingAroundAdvice"/>
         &lt;!&ndash;切点&ndash;&gt;
-        <property name="pattern" value="com.zq.smart_framework.proxy.test.aop.GreetingImpl.good.*"/>
+        <property name="pattern" value="com.zq.smart_framework.test.aop.GreetingImpl.good.*"/>
 
     </bean>
 
@@ -60,7 +60,7 @@
 
         <property name="advice" ref="greetingAroundAdvice"/>
 
-        <property name="pattern" value="com.zq.smart_framework.proxy.test.aop.GreetingImpl.good.*"/>
+        <property name="pattern" value="com.zq.smart_framework.test.aop.GreetingImpl.good.*"/>
 
     </bean>
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
@@ -69,13 +69,13 @@
 
     <!--<aop:aspectj-autoproxy proxy-target-class="true"/>-->
 
-    <bean id="greetingImpl" class="com.zq.smart_framework.proxy.test.aop.GreetingImpl"/>
+    <!--<bean id="greetingImpl" class="com.zq.smart_framework.test.aop.GreetingImpl"/>
 
-    <bean id="greetingAspect" class="com.zq.smart_framework.proxy.test.aop.asp.GreetingAspect"/>
+    <bean id="greetingAspect" class="com.zq.smart_framework.test.aop.asp.GreetingAspect"/>
 
     <aop:config >
     <aop:aspect ref="greetingAspect">
-        <aop:around method="around" pointcut="execution(* com.zq.smart_framework.proxy.test.aop.GreetingImpl.*(..))"/>
+        <aop:around method="around" pointcut="execution(* com.zq.smart_framework.test.aop.GreetingImpl.*(..))"/>
     </aop:aspect>
-    </aop:config>
+    </aop:config>-->
 </beans>
