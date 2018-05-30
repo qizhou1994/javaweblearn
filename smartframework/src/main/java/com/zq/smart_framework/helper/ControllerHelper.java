@@ -35,6 +35,7 @@ public final class ControllerHelper {
                         //判断当前方法是否带有注解Action
                         if (method.isAnnotationPresent(Action.class)) {
                             Action action = method.getAnnotation(Action.class);
+                            System.out.println("Action: --- = "  + action.value()+",method:   "  + method);
                             String mapping = action.value();
                             //验证URL映射规则
                             if (mapping.matches("\\w+:/\\w*")) {

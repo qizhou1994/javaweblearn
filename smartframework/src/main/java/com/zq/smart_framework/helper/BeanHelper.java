@@ -11,11 +11,14 @@ public final class BeanHelper {
      private static final Map<Class<?>,Object> BEAN_MAP = new HashMap<Class<?>, Object>();
 
      static{
+         System.out.println("开始BeanHelper");
          Set<Class<?>> beanClassSet = ClassHelper.getBeanClassSet();
          for (Class<?> beanClass : beanClassSet){
+             System.out.println("开始beanClass= " + beanClass.getName());
              Object obj = ReflectionUtil.newInstance(beanClass);
              BEAN_MAP.put(beanClass,obj);
          }
+         System.out.println("结束beanClass= " );
      }
 
 

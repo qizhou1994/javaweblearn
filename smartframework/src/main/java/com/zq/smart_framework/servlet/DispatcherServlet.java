@@ -33,29 +33,30 @@ public class DispatcherServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException   {
-
-    //初始化相关Helper类
+     System.out.println("init");
+     //初始化相关Helper类
     HelperLoader.init();
+        System.out.println("运行完？init");
     //获取ServletContext对象 （注册servlet）
-     ServletContext servletContext = getServletConfig().getServletContext();
+     ServletContext servletContext = config.getServletContext();
     //注册处理JSP的Servlet
     ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
     jspServlet.addMapping(ConfigHelper.getAppJspPath() + "*");
+    System.out.println("ConfigHelper.getAppJspPath() + \"*\" = " + ConfigHelper.getAppJspPath());
     //注册处理静态资源的默认Servlet
     ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
 
     defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
-
+        System.out.println("ConfigHelper.getAppAssetPath() + \"*\" =" +ConfigHelper.getAppAssetPath());
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/WEB-INF/view/nol.jsp").forward(req,resp);
-    }
+
+
 
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("输入网页");
         //获取请求方法与请求路径
         String requestMethod = req.getMethod().toLowerCase();
         String requestPath = req.getPathInfo();
@@ -93,10 +94,12 @@ public class DispatcherServlet extends HttpServlet {
             Method actionMethod = handler.getActionMethod();
             Object result = ReflectionUtil.invokeMethod(controllerBean,actionMethod,param);
             //处理Action方法返回值
+            System.out.println("请求为"+ result);
             if(result instanceof View){
                 //返回JSP页面
                 View view = (View) result;
                 String path = view.getPath();
+                System.out.println("请求地址为"+ path);
                 if(StringUtil.isNotEmpty(path)){
                     if(path.startsWith("/")){
                         resp.sendRedirect(req.getContextPath() + path);

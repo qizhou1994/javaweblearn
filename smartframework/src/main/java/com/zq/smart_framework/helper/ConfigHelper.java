@@ -42,13 +42,14 @@ public final class ConfigHelper {
      */
     public static String getAppBasePackage() {
         return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_BASE_PACKAGE);
+//        return "com.zq.smart_framework";
     }
 
     /**
      * 获取应用 JSP 路径
      */
     public static String getAppJspPath() {
-        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH, "/WEB-INF/view/");
+        return PropsUtil.getString(CONFIG_PROPS, ConfigConstant.APP_JSP_PATH, "/WEB-INF/jsp/");
     }
 
     /**

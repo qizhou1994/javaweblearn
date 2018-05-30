@@ -8,7 +8,7 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!-- 扫描指定包-->
-    <context:component-scan base-package="com.zq.smart_framework.test"/>
+    <!--<context:component-scan base-package="com.zq.smart_framework.test"/>-->
    <!-- <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="interfaces" value="com.zq.smart_framework.test.aop.Greeting"/>
         <property name="target" ref="greetingImpl"/>

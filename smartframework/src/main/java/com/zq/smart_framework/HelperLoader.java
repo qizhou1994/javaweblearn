@@ -15,15 +15,18 @@ public final class HelperLoader {
         // AopHelper.class要在   IocHelper.class之前加载，因为需要使用AopHelper获取代理，才可注入
         Class<?>[] classList = {
                 ClassHelper.class,
+                DatabaseHelper.class,
                 BeanHelper.class,
                 AopHelper.class,
                 IocHelper.class,
                 ControllerHelper.class
         };
 
-        for(Class<?> cls : classList){
+
+        for(int i = 0; i<classList.length ; i++){
+            Class<?> cls = classList[i];
             try {
-                System.out.println("cls = "+ cls.getName());
+
                 ClassUtil.loadClass(cls.getName());
             }catch (Exception e){
                 System.out.println("load class failure = "+ e.getMessage());
@@ -32,4 +35,6 @@ public final class HelperLoader {
 
         }
     }
+
+
 }

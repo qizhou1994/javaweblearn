@@ -5,12 +5,12 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 扫描指定包-->
-    <context:component-scan base-package="com.zq.smart_framework.test"/>
+    <!--<context:component-scan base-package="com.zq.smart_framework.test"/>
     <bean id="greetingProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="interfaces" value="com.zq.smart_framework.test.aop.Greeting"/>
         <property name="target" ref="greetingImpl"/>
-        <property name="interceptorNames" value="greetingAroundAdvice"/> <!--拦截器-->
-    </bean>
+        <property name="interceptorNames" value="greetingAroundAdvice"/> &lt;!&ndash;拦截器&ndash;&gt;
+    </bean>-->
 
 
 

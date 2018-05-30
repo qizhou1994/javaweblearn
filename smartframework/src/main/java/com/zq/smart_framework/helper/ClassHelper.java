@@ -48,6 +48,7 @@ public final class ClassHelper {
         Set<Class<?>> classSet = new HashSet<Class<?>>();
         for (Class<?> cls : CLASS_SET) {
             if (cls.isAnnotationPresent(Controller.class)) {
+                System.out.println("Controller.class = " + cls);
                 classSet.add(cls);
             }
         }
