@@ -11,7 +11,7 @@
     <packaging>war</packaging>
     <dependencies>
         <dependency>
-            <groupId>com.zq</groupId>
+            <groupId>org.smart4j</groupId>
             <artifactId>smart-framework</artifactId>
             <version>1.0.0</version>
         </dependency>
@@ -26,6 +26,14 @@
                 <version>2.2</version>
                 <configuration>
                     <path>/${project.artifactId}</path>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>6</source>
+                    <target>6</target>
                 </configuration>
             </plugin>
         </plugins>
