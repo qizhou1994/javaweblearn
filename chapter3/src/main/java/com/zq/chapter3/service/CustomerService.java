@@ -2,7 +2,9 @@ package com.zq.chapter3.service;
 
 import com.zq.chapter3.model.Customer;
 import com.zq.smart_framework.annotation.Service;
+import com.zq.smart_framework.bean.FileParam;
 import com.zq.smart_framework.helper.DatabaseHelper;
+import com.zq.smart_framework.helper.UploadHelper;
 
 import java.util.List;
 import java.util.Map;
@@ -27,9 +29,17 @@ public class CustomerService {
     }
 
    //创建客户
-
+/*
     public boolean createCustomer(Map<String, Object> fieldMap) {
         return DatabaseHelper.insertEntity(Customer.class, fieldMap);
+    }*/
+
+    public boolean createCustomer(Map<String, Object> fieldMap, FileParam fileParam) {
+        boolean result = DatabaseHelper.insertEntity(Customer.class, fieldMap);
+        if(result){
+            UploadHelper.uploadFile("/temp/upload",fileParam);
+        }
+        return result;
     }
 
     //更新客户

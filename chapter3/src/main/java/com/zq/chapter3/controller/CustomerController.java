@@ -10,6 +10,7 @@ import com.zq.smart_framework.annotation.Action;
 import com.zq.smart_framework.annotation.Controller;
 import com.zq.smart_framework.annotation.Inject;
 import com.zq.smart_framework.bean.Data;
+import com.zq.smart_framework.bean.FileParam;
 import com.zq.smart_framework.bean.Param;
 import com.zq.smart_framework.bean.View;
 
@@ -30,7 +31,7 @@ public class CustomerController {
 //     进入 客户列表 界面
 
     @Action("get:/customer")
-    public View index(Param param) {
+    public View index() {
         List<Customer> customerList = customerService.getCustomerList();
         return new View("customer.jsp").addModel("customerList", customerList);
     }
@@ -54,8 +55,9 @@ public class CustomerController {
 
     @Action("post:/customer_create")
     public Data createSubmit(Param param) {
-        Map<String, Object> fieldMap = param.getParamMap();
-        boolean result = customerService.createCustomer(fieldMap);
+        Map<String, Object> fieldMap = param.getFieldMap();
+        FileParam fileParam = param.getFile("photo");
+        boolean result = customerService.createCustomer(fieldMap,fileParam);
         return new Data(result);
     }
 
