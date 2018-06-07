@@ -1,7 +1,15 @@
 package com.zq.chapter3.service;
 
-import com.zq.smart_framework.util.JsonUtil;
-import org.apache.commons.logging.Log;
+
+
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.config.IniSecurityManagerFactory;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.Factory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Author zq
@@ -9,10 +17,33 @@ import org.apache.commons.logging.Log;
  * Email : qizhou1994@126.com
  */
 public class Main {
-   /* public static void main(String[] arg){
-        String s ="{\n  \"userIv\" : \"\",\n  \"content\" : \"message test\",\n  \"msgType\" : \"TXT\",\n  \"userId\" : 25,\n  \"id\" : \"\",\n  \"status\" : \"\",\n  \"uuid\" : \"71CC2B03-2C09-44F5-B275-BF84422FDE9F\",\n  \"sendTime\" : \"1527731918000\",\n  \"conversationId\" : \"254\",\n  \"direct\" : \"\"\n}";
-        System.out.print( "s=" + s);
-        ChatTest chatTest = JsonUtil.fromJson(s,ChatTest.class);
-        System.out.print("chatTest = " + chatTest);
-    }*/
+    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
+    public static void main(String[] arg){
+     //初始化SecurityManager
+        Factory<SecurityManager> factory = new IniSecurityManagerFactory("classpath:shiro.ini");
+        SecurityManager securityManager = factory.getInstance();
+        SecurityUtils.setSecurityManager(securityManager);
+
+        //获取当前用户
+        Subject subject = SecurityUtils.getSubject();
+
+
+        //登录
+        UsernamePasswordToken token = new UsernamePasswordToken("shiro","201314");
+
+        try {
+            subject.login(token);
+        }catch (Exception e){
+            logger.debug("登录失败 e= " + e);
+            e.printStackTrace();
+        }
+
+        logger.info("登录成功 " + subject.getPrincipal());
+        //注销
+        subject.logout();
+
+
+
+    }
 }
