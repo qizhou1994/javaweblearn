@@ -29,13 +29,15 @@ public final class ControllerHelper {
             for (Class<?> controllerClass : controllerClassSet) {
                 //获取Controller类中定义的方法
                 Method[] methods = controllerClass.getDeclaredMethods();
+
                 if (ArrayUtil.isNotEmpty(methods)) {
                     //遍历Controller类中的方法
                     for (Method method : methods) {
+//                        System.out.println("method=" + method);
                         //判断当前方法是否带有注解Action
                         if (method.isAnnotationPresent(Action.class)) {
                             Action action = method.getAnnotation(Action.class);
-                            System.out.println("Action: --- = "  + action.value()+",method:   "  + method);
+//                            System.out.println("Action: --- = "  + action.value()+",method:   "  + method);
                             String mapping = action.value();
                             //验证URL映射规则
                             if (mapping.matches("\\w+:/\\w*")) {

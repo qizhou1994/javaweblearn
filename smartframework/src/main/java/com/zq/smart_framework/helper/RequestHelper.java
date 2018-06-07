@@ -38,7 +38,7 @@ public final class RequestHelper {
      * @return
      */
     private static List<FormParam> parseParameterNames(HttpServletRequest request){
-        List<FormParam> formParamList = new ArrayList<>();
+        List<FormParam> formParamList = new ArrayList<FormParam>();
         Enumeration<String> paramNames = request.getParameterNames();
         while (paramNames.hasMoreElements()){
             String fieldName = paramNames.nextElement();

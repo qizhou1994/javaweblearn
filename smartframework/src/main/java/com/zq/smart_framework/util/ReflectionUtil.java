@@ -40,11 +40,19 @@ public final class ReflectionUtil {
     /**
      * 调用方法
      */
-    public static Object invokeMethod(Object obj, Method method, Object... args) {
+    public static Object invokeMethod(Object obj, Method method, Object[] args) {
         Object result;
         try {
+            System.out.println("obj = "+ obj);
+            System.out.println("method = "+ method);
+            System.out.println(args+ ",args = "+ args.length);
+
+            System.out.println("getParameterType=" + method.getParameterTypes());
+            for (Class cls : method.getParameterTypes()) {
+                System.out.println("methodgetParameterTypes.cls=" + cls);
+            }
             method.setAccessible(true);
-            result = method.invoke(obj, args);
+            result = method.invoke(obj,args);
         } catch (Exception e) {
             LOGGER.error("invoke method failure", e);
             throw new RuntimeException(e);
@@ -64,4 +72,8 @@ public final class ReflectionUtil {
             throw new RuntimeException(e);
         }
     }
+
+
+
+
 }

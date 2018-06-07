@@ -20,6 +20,7 @@ public class Handler {
     public Handler(Class<?> controllerClass,Method actionMethod){
         this.controllerClass = controllerClass;
         this.actionMethod = actionMethod;
+//        System.out.println("  this.actionMethod = " +   this.actionMethod);
     }
 
     public Class<?> getControllerClass() {

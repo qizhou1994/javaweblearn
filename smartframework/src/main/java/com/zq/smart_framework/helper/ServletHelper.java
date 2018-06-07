@@ -14,14 +14,14 @@ import java.io.IOException;
  * Created by CTSIG on 2018/6/1.
  * Email : qizhou1994@126.com
  */
-public class ServletHelper {
+public final class ServletHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ServletHelper.class);
 
     /**
      * 使每个线程独自拥有一份ServletHelper实例
       */
-    private static final ThreadLocal<ServletHelper> SERVLET_HELPER_HOLDER = new ThreadLocal<>();
+    private static final ThreadLocal<ServletHelper> SERVLET_HELPER_HOLDER = new ThreadLocal<ServletHelper>();
 
     private HttpServletRequest request;
     private HttpServletResponse response;

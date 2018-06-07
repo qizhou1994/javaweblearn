@@ -8,7 +8,7 @@ import com.zq.smart_framework.util.ReflectionUtil;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-public class IocHelper {
+public final class IocHelper {
 
     static{
         //获取所有的bean类 与bean实例之间的映射关系

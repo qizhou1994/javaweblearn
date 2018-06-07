@@ -27,6 +27,7 @@ com\zq\smart_framework\util\StreamUtil.class
 com\zq\smart_framework\util\ClassUtil.class
 com\zq\smart_framework\helper\RequestHelper.class
 com\zq\smart_framework\Main.class
+com\zq\smart_framework\helper\ServletHelper.class
 com\zq\smart_framework\test\CGLibProxy.class
 com\zq\smart_framework\bean\FormParam.class
 com\zq\smart_framework\test\thread\ClientThread.class
@@ -39,7 +40,6 @@ com\zq\smart_framework\bean\Handler.class
 com\zq\smart_framework\ConfigConstant.class
 com\zq\smart_framework\annotation\Inject.class
 com\zq\smart_framework\helper\UploadHelper.class
-com\zq\smart_framework\bean\Customer.class
 com\zq\smart_framework\test\thread\SequenceC$1.class
 com\zq\smart_framework\bean\Data.class
 com\zq\smart_framework\annotation\Service.class

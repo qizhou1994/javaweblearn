@@ -26,12 +26,10 @@ public class Param {
 
 
     public Param(List<FormParam> formParamList){
-
         this.formParamList = formParamList;
     }
 
     public Param(List<FormParam> formParamList,List<FileParam> fileParamList){
-
         this.formParamList = formParamList;
         this.fileParamList = fileParamList;
     }
@@ -45,7 +43,7 @@ public class Param {
         Map<String,Object> fileMap = new HashMap<>();
         if(CollectionUtil.isNotEmpty(formParamList)){
             for (FormParam formParam: formParamList){
-                String fieldName = formParam.getFileName();
+                String fieldName = formParam.getFieldName();
                 Object fieldValue = formParam.getFieldValue();
                 if(fileMap.containsKey(fieldName)){
                     fieldValue = fileMap.get(fieldName) + StringUtil.SEPARATOR + fieldValue;
@@ -65,7 +63,7 @@ public class Param {
         Map<String,List<FileParam>> fileMap = new HashMap<>();
         if(CollectionUtil.isNotEmpty(fileParamList)){
             for (FileParam fileParam: fileParamList){
-                String fieldName = fileParam.getFileName();
+                String fieldName = fileParam.getFieldName();
                 List<FileParam> fileParamList;
                 if(fileMap.containsKey(fieldName)){
                     fileParamList  = fileMap.get(fieldName);
@@ -154,5 +152,11 @@ public class Param {
         return CastUtil.castBoolean(getFieldMap().get(name));
     }
 
-
+    @Override
+    public String toString() {
+        return "Param{" +
+                "formParamList=" + formParamList +
+                ", fileParamList=" + fileParamList +
+                '}';
+    }
 }

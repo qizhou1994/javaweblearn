@@ -7,6 +7,7 @@ import com.zq.smart_framework.bean.Param;
 import com.zq.smart_framework.bean.View;
 import com.zq.smart_framework.helper.*;
 import com.zq.smart_framework.util.*;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
@@ -16,8 +17,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
-import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,6 +27,7 @@ import java.util.Map;
 
 @WebServlet("/*")
 public class DispatcherServlet extends HttpServlet {
+    private static final org.slf4j.Logger LOGGER = LoggerFactory.getLogger(DispatcherServlet.class);
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -40,12 +40,24 @@ public class DispatcherServlet extends HttpServlet {
         //注册处理JSP的Servlet
         ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
         jspServlet.addMapping(ConfigHelper.getAppJspPath() + "*");
-        System.out.println("ConfigHelper.getAppJspPath() + \"*\" = " + ConfigHelper.getAppJspPath());
+        System.out.println("ConfigHelper.getAppJspPath() + \"* \" = " + ConfigHelper.getAppJspPath());
         //注册处理静态资源的默认Servlet
         ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
 
         defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
         System.out.println("ConfigHelper.getAppAssetPath() + \"*\" =" + ConfigHelper.getAppAssetPath());
+
+        UploadHelper.init(servletContext);
+    }
+
+    private void registerServlet(ServletContext servletContext) {
+        ServletRegistration jspServlet = servletContext.getServletRegistration("jsp");
+        jspServlet.addMapping("/index.jsp");
+        jspServlet.addMapping(ConfigHelper.getAppJspPath() + "*");
+
+        ServletRegistration defaultServlet = servletContext.getServletRegistration("default");
+        defaultServlet.addMapping("/favicon.ico");
+        defaultServlet.addMapping(ConfigHelper.getAppAssetPath() + "*");
     }
 
 
@@ -53,14 +65,16 @@ public class DispatcherServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         System.out.println("输入网页");
 
-        ServletHelper.init(req,resp);
+        ServletHelper.init(req, resp);
         try {
             //获取请求方法与请求路径
             String requestMethod = req.getMethod().toLowerCase();
             String requestPath = req.getPathInfo();
-            if (requestPath.equals("/favicon.ico")) {
+            System.out.println("requestMethod = " + requestMethod);
+            System.out.println("requestPath = " + requestPath);
+         /*   if (requestPath.equals("/favicon.ico")) {
                 return;
-            }
+            }*/
             //获取Action处理器
             Handler handler = ControllerHelper.getHandler(requestMethod, requestPath);
             if (handler != null) {
@@ -102,12 +116,14 @@ public class DispatcherServlet extends HttpServlet {
                 Method actionMethod = handler.getActionMethod();
                 //请求参数为空与不为空 分别走两种
                 Object result;
+                System.out.println("param  = " + param);
                 if (param.isEmpty()) {
-                    result = ReflectionUtil.invokeMethod(controllerBean, actionMethod);
+                    result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, new Object[]{});
                 } else {
-                    result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, param);
+                    result = ReflectionUtil.invokeMethod(controllerBean, actionMethod, new Object[]{param});
                 }
-//            Object result = ReflectionUtil.invokeMethod(controllerBean,actionMethod,param);
+
+//              result = ReflectionUtil.invokeMethod(controllerBean,actionMethod,param);
                 //处理Action方法返回值
                 System.out.println("请求为" + result);
                 if (result instanceof View) {
@@ -120,7 +136,10 @@ public class DispatcherServlet extends HttpServlet {
                     handleDataResult(data, resp);
                 }
             }
-        }finally {
+        } catch (Exception e) {
+            handleViewResult(new View("error.jsp"), req, resp);
+            LOGGER.error("Servlet error:" + e);
+        } finally {
             ServletHelper.destory();
         }
     }
@@ -160,11 +179,11 @@ public class DispatcherServlet extends HttpServlet {
     private void handleDataResult(Data data, HttpServletResponse response) throws IOException {
         //返回JSON数据
         Object model = data.getModel();
-        if (model != null) {
+        if (data != null) {
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             PrintWriter writer = response.getWriter();
-            String json = JsonUtil.toJson(model);
+            String json = JsonUtil.toJson(data);
             writer.write(json);
             writer.flush();
             writer.close();

@@ -1,8 +1,5 @@
 package com.zq.smart_framework;
 
-import com.zq.smart_framework.bean.Customer;
-import com.zq.smart_framework.helper.DatabaseHelper;
-
 /**
  * Author zq
  * Created by CTSIG on 2018/5/24.

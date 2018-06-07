@@ -14,7 +14,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.servlet.Servlet;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.*;
@@ -62,7 +62,7 @@ public final class UploadHelper {
      * @return
      * @throws FileUploadException
      */
-    public static Param createParam(HttpServletRequest request)  {
+    public static Param createParam(HttpServletRequest request) throws IOException {
         List<FormParam> formParamList = new ArrayList<>();
         List<FileParam> fileParamList = new ArrayList<>();
         try {
@@ -93,12 +93,10 @@ public final class UploadHelper {
                 }
             }
         }
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+
         } catch (FileUploadException e) {
-            e.printStackTrace();
+            LOGGER.error("create param failure", e);
+            throw new RuntimeException(e);
         }
         //表单数据与文件数据返回
         return new Param(formParamList,fileParamList);
@@ -121,6 +119,7 @@ public final class UploadHelper {
 
         }
         } catch (FileNotFoundException e) {
+            LOGGER.error("upload file failure", e);
             e.printStackTrace();
         }
     }

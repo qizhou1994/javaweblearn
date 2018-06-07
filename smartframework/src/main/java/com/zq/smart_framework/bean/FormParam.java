@@ -10,29 +10,23 @@ import java.util.List;
  */
 public class FormParam {
 
-    private String fileName;
+    private String fieldName;
     private Object fieldValue;
 
     public FormParam(String fieldName,Object fieldValue){
         this.fieldValue = fieldValue;
-        this.fileName = fieldName;
+        this.fieldName = fieldName;
 
     }
 
 
-    public String getFileName() {
-        return fileName;
+    public String getFieldName() {
+        return fieldName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 
     public Object getFieldValue() {
         return fieldValue;
     }
 
-    public void setFieldValue(Object fieldValue) {
-        this.fieldValue = fieldValue;
-    }
 }

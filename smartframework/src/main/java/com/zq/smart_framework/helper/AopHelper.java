@@ -34,7 +34,6 @@ public final class AopHelper {
                 List<Proxy> proxyList = targetEntry.getValue();
                 Object proxy = ProxyManager.createProxy(targetClass,proxyList);
                 //对象放入bean map中
-                System.out.println(proxy + "对象放入bean:" + targetClass);
                 BeanHelper.setBean(targetClass,proxy);
             }
         } catch (Exception e) {
