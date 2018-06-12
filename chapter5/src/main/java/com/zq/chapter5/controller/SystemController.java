@@ -44,7 +44,7 @@ public class SystemController {
     public View loginSubmit(Param param){
         String username = param.getString("username");
         String password = param.getString("password");
-
+        System.out.println("user = " + username + ",psw = " + password);
         try {
             SecurityHelper.login(username,password);
         }catch (Exception e){
