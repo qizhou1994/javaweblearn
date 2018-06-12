@@ -17,10 +17,17 @@ public final class SecurityHelper {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SecurityHelper.class);
 
+    /**
+     * 登录
+     * @param username
+     * @param password
+     * @throws AuthcException
+     */
     public static void login(String username,String password) throws AuthcException {
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser != null) {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+            System.out.println("UsernamePasswordToken = "+ token);
             try {
                 currentUser.login(token);
             } catch (AuthenticationException e) {
@@ -31,6 +38,9 @@ public final class SecurityHelper {
     }
 
 
+    /**
+     * 注销
+     */
     public static void logout(){
         Subject currentUser = SecurityUtils.getSubject();
         if (currentUser != null) {

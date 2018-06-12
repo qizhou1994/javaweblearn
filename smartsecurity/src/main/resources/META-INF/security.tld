@@ -100,7 +100,7 @@
         </attribute>
     </tag>
 
- <!--   <tag>
+    <tag>
         <description>判断当前用户是否拥有其中所有的角色（逗号分隔，表示“与”的关系）</description>
         <name>hasAllRoles</name>
         <tag-class>com.zq.smartsecurity.tag.HasAllRolesTag</tag-class>
@@ -112,7 +112,7 @@
         </attribute>
     </tag>
 
-    &lt;!&ndash; ================================================== 权限 ================================================== &ndash;&gt;
+    <!-- ================================================== 权限 ================================================== -->
 
     <tag>
         <description>判断当前用户是否拥有某种权限</description>
@@ -161,5 +161,4 @@
             <rtexprvalue>true</rtexprvalue>
         </attribute>
     </tag>
--->
 </taglib>

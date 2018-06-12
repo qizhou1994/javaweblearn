@@ -2,7 +2,8 @@ package com.zq.smartsecurity.realm;
 
 import com.zq.smart_framework.helper.DatabaseHelper;
 import com.zq.smartsecurity.SecurityConfig;
-import org.apache.shiro.authc.credential.Md5CredentialsMatcher;
+
+import com.zq.smartsecurity.password.Md5CredentialsMatcher;
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 
 /**
@@ -19,6 +20,6 @@ public class SmartJdbcRealm extends JdbcRealm {
         super.setUserRolesQuery(SecurityConfig.getJdbcRolesQuery());
         super.setPermissionsQuery(SecurityConfig.getJdbcPermissionsQuery());
         super.setPermissionsLookupEnabled(true);
-        super.setCredentialsMatcher(new Md5CredentialsMatcher());
+        super.setCredentialsMatcher(new Md5CredentialsMatcher());//使用MD5加密算法
     }
 }
