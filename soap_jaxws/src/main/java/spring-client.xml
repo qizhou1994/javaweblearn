@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://cxf.apache.org/jaxws
+        http://cxf.apache.org/schemas/jaxws.xsd">
+
+<!--
+    <bean id="factoryBean" class="org.apache.cxf.jaxws.JaxWsProxyFactoryBean">
+        <property name="serviceClass" value="com.zq.soap_jaxws.HelloService"/>
+        <property name="address" value="http://localhost:8080/ws/soap/hello"/>
+    </bean>
+
+    <bean id="helloService" factory-bean="factoryBean" factory-method="create"/>-->
+    <context:component-scan base-package="com.zq.soap_jaxws"/>
+    <bean id="wss4jOutInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JOutInterceptor">
+        <constructor-arg>
+            <map>
+                <!--用户验证 （明文密码）-->
+                <entry key="action" value="UsernameToken"/>
+                <entry key="user" value="client"/>
+                <entry key="passwordType" value="PasswordText"/>
+                <entry key="passwordCallbackRef" value-ref="clientPasswordCallback"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+    <jaxws:client id="helloService"
+                  serviceClass="com.zq.soap_jaxws.HelloService"
+                  address="http://localhost:8080/ws/soap/hello">
+        <jaxws:outInterceptors>
+            <ref bean="wss4jOutInterceptor"/>
+        </jaxws:outInterceptors>
+    </jaxws:client>
+
+</beans>

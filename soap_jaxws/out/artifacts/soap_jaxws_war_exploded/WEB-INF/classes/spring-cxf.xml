@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+       xmlns:simple="http://cxf.apache.org/jaxws" xmlns:cxf="http://cxf.apache.org/core"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://cxf.apache.org/jaxws
+       http://cxf.apache.org/schemas/jaxws.xsd
+       http://cxf.apache.org/core
+       http://cxf.apache.org/schemas/core.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<jaxws:server id="helloService" address="/soap/hello">
+        <jaxws:serviceBean>
+            <ref bean="helloServiceImpl"/>
+        </jaxws:serviceBean>
+    </jaxws:server>-->
+    <!--<jaxws:endpoint id="helloService" implementor="#helloServiceImpl" address="/soap/hello"/>-->
+  <!--<simple:server id="helloService" serviceClass="#helloService" address="/soap/hello"></simple:server>-->
+    <context:component-scan base-package="com.zq.soap_jaxws"/>
+
+    <bean id="wss4jInInterceptor" class="org.apache.cxf.ws.security.wss4j.WSS4JInInterceptor">
+        <constructor-arg>
+            <map>
+                <!--用户验证 （明文密码）-->
+                <entry key="action" value="UsernameToken"/>
+                <entry key="passwordType" value="PasswordText"/>
+                <entry key="passwordCallbackRef" value-ref="serverPasswordCallback"/>
+            </map>
+        </constructor-arg>
+    </bean>
+
+
+    <jaxws:endpoint id="helloService" implementor="#helloServiceImpl" address="/soap/hello">
+        <jaxws:inInterceptors>
+            <ref bean="wss4jInInterceptor"/>
+        </jaxws:inInterceptors>
+    </jaxws:endpoint>
+
+    <cxf:bus>
+        <cxf:features>
+            <cxf:logging/>
+        </cxf:features>
+    </cxf:bus>
+
+
+
+</beans>
