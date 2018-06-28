@@ -20,10 +20,13 @@
         <constructor-arg>
             <map>
                 <!--用户验证 （明文密码）-->
-                <entry key="action" value="UsernameToken"/>
-                <entry key="user" value="client"/>
-                <entry key="passwordType" value="PasswordText"/>
+                <entry key="action" value="Signature"/>
+                <entry key="signaturePropFile" value="client.properties"/>
+                <entry key="signatureUser" value="client"/>
                 <entry key="passwordCallbackRef" value-ref="clientPasswordCallback"/>
+                <!--<entry key="user" value="client"/>-->
+                <!--<entry key="passwordType" value="PasswordText"/>-->
+                <!--<entry key="passwordCallbackRef" value-ref="clientPasswordCallback"/>-->
             </map>
         </constructor-arg>
     </bean>

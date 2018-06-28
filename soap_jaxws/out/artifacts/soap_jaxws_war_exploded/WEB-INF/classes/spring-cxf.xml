@@ -24,9 +24,11 @@
         <constructor-arg>
             <map>
                 <!--用户验证 （明文密码）-->
-                <entry key="action" value="UsernameToken"/>
-                <entry key="passwordType" value="PasswordText"/>
-                <entry key="passwordCallbackRef" value-ref="serverPasswordCallback"/>
+                <entry key="action" value="Signature"/>
+                <!--<entry key="passwordType" value="PasswordText"/>-->
+                <!--<entry key="passwordCallbackRef" value-ref="serverPasswordCallback"/>-->
+                <entry key="signaturePropFile" value="server.properties"/>
+
             </map>
         </constructor-arg>
     </bean>
